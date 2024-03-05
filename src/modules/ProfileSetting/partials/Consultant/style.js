@@ -27,6 +27,11 @@ export const getSx = () => {
       fontSize: "18px",
       fontWeight: "500",
     },
+    label: {
+      fontSize: "16px",
+      fontWeight: "600",
+      marginBottom: "1rem",
+    },
     inputAdornment: {
       "& p": {
         fontSize: "20px",

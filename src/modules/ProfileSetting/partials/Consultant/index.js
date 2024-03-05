@@ -77,34 +77,37 @@ const Consultant = ({ edit, formData, setFormData }) => {
       <Typography sx={styles.heading}>Consultant OverView</Typography>
       <Grid container spacing={2} marginTop="0.5rem">
         <Grid item lg={4} md={6} xs={12}>
+          <Typography sx={styles.label}>LAST NAME</Typography>
           <TextField
             id="standard-helperText"
-            label="LAST NAME"
             variant="standard"
-            name='lastName'
+            name="lastName"
             sx={styles.input}
+            value={formData.lastName}
             onChange={onChangesHandler}
             inputProps={{ readOnly: !edit }}
           />
         </Grid>
         <Grid item lg={4} md={6} xs={12}>
+          <Typography sx={styles.label}>FIRST NAME</Typography>
           <TextField
             id="standard-helperText"
-            label="FIRST NAME"
             variant="standard"
-            name='firstName'
+            name="firstName"
             sx={styles.input}
+            value={formData.firstName}
             onChange={onChangesHandler}
             inputProps={{ readOnly: !edit }}
           />
         </Grid>
         <Grid item lg={4} md={6} xs={12}>
+          <Typography sx={styles.label}>JOB TITLE</Typography>
           <TextField
             id="standard-helperText"
-            label="JOB TITLE"
             variant="standard"
-            name='jobTitle'
+            name="jobTitle"
             sx={styles.input}
+            value={formData.jobTitle}
             onChange={onChangesHandler}
             inputProps={{ readOnly: !edit }}
           />
