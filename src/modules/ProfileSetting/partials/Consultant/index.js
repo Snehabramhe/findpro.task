@@ -130,7 +130,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
               })
             }
           />
-          <Typography sx={styles.heading3}>Fixed rate</Typography>
+          <Typography sx={styles.heading3}>Set range</Typography>
         </Box>
         <Box sx={{ display: "flex", columnGap: "1rem", alignItems: 'center' }}>
           {formData.range ? (
