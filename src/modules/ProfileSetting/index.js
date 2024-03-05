@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import React, { useState } from "react";
 import { getSx } from "./partials/Header/style";
 import Header from "./partials/Header";
@@ -19,7 +19,7 @@ const ProfileSetting = () => {
 
   return (
     <Box sx={styles.wrapper}>
-      <Header edit={edit} setEdit={setEdit} />
+      <Header edit={edit} setEdit={setEdit} onSaveChanges={onSaveChanges}/>
       <Consultant edit={edit} formData={formData} setFormData={setFormData}/>
     </Box>
   );

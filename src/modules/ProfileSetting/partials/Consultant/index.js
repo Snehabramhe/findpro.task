@@ -33,6 +33,13 @@ const Consultant = ({ edit, formData, setFormData }) => {
     });
   };
 
+  const onChangesSalaryValue = (value) => {
+    setFormData({
+      ...formData,
+      salaryType: value,
+    });
+  };
+
   return (
     <Box sx={styles.wrapper}>
       <Typography sx={styles.heading}>Consultant OverView</Typography>
@@ -43,7 +50,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
             label="LAST NAME"
             variant="standard"
             sx={styles.input}
-            FormHelperTextProps={edit ? disabledClassNameProps : undefined}
+            readOnly={edit}
             onChange={onChangesHandler}
           />
         </Grid>
@@ -113,23 +120,86 @@ const Consultant = ({ edit, formData, setFormData }) => {
           }}
         >
           <Typography sx={styles.heading3}>Fixed rate</Typography>
-          <Switch {...label} defaultChecked />
+          <Switch
+            {...label}
+            checked={formData.range}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                range: e.target.checked ? true : false,
+              })
+            }
+          />
+          <Typography sx={styles.heading3}>Fixed rate</Typography>
         </Box>
-
-        <OutlinedInput
-          id="outlined-adornment-weight"
-          startAdornment={
-            <InputAdornment position="end" sx={styles.inputAdornment}>
-              $
-            </InputAdornment>
-          }
-          aria-describedby="outlined-weight-helper-text"
-          inputProps={{
-            "aria-label": "weight",
-          }}
-          type="number"
-        />
-        <Typography sx={styles.heading3}>{formData.salaryType}</Typography>
+        <Box sx={{ display: "flex", columnGap: "1rem", alignItems: 'center' }}>
+          {formData.range ? (
+            <>
+              <OutlinedInput
+                id="outlined-adornment-weight"
+                startAdornment={
+                  <InputAdornment position="end" sx={styles.inputAdornment}>
+                    $
+                  </InputAdornment>
+                }
+                endAdornment={
+                  <InputAdornment position="end" sx={styles.inputAdornment}>
+                    min
+                  </InputAdornment>
+                }
+                aria-describedby="outlined-weight-helper-text"
+                inputProps={{
+                  "aria-label": "weight",
+                }}
+                type="number"
+                name="salaryValueMin"
+                onChange={onChangesHandler}
+              />
+              <OutlinedInput
+                id="outlined-adornment-weight"
+                startAdornment={
+                  <InputAdornment position="end" sx={styles.inputAdornment}>
+                    $
+                  </InputAdornment>
+                }
+                endAdornment={
+                  <InputAdornment position="end" sx={styles.inputAdornment}>
+                    max
+                  </InputAdornment>
+                }
+                aria-describedby="outlined-weight-helper-text"
+                inputProps={{
+                  "aria-label": "weight",
+                }}
+                type="number"
+                name="salaryValueMax"
+                onChange={onChangesHandler}
+              />
+            </>
+          ) : (
+            <OutlinedInput
+              id="outlined-adornment-weight"
+              startAdornment={
+                <InputAdornment position="end" sx={styles.inputAdornment}>
+                  $
+                </InputAdornment>
+              }
+              aria-describedby="outlined-weight-helper-text"
+              inputProps={{
+                "aria-label": "weight",
+              }}
+              type="number"
+              name="salaryValue"
+              onChange={onChangesHandler}
+            />
+          )}
+          <Typography sx={styles.heading3}>
+            {" "}
+            {formData.range
+              ? `Per ${formData.salaryType}`
+              : formData.salaryType}
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );

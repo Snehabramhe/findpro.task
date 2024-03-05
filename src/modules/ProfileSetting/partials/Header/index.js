@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { getSx } from "./style";
 
-const Header = ({ edit, setEdit }) => {
+const Header = ({ edit, setEdit, onSaveChanges }) => {
   const styles = getSx();
 
   return (
@@ -21,6 +21,7 @@ const Header = ({ edit, setEdit }) => {
             <Button
               variant="contained"
               sx={{ ...styles.commonButton, ...styles.saveButton }}
+              onClick={onSaveChanges}
             >
               Save Changes
             </Button>
