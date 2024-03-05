@@ -37,7 +37,7 @@ export const getSx = () => {
         fontSize: "20px",
         fontWeight: "600",
         olor: "#000000",
-        marginRight: '10px'
+        marginRight: '1rem'
       },
     },
     buttonWrapper: {
