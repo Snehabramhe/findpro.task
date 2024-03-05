@@ -81,6 +81,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
             id="standard-helperText"
             label="LAST NAME"
             variant="standard"
+            name='lastName'
             sx={styles.input}
             onChange={onChangesHandler}
             inputProps={{ readOnly: !edit }}
@@ -91,6 +92,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
             id="standard-helperText"
             label="FIRST NAME"
             variant="standard"
+            name='firstName'
             sx={styles.input}
             onChange={onChangesHandler}
             inputProps={{ readOnly: !edit }}
@@ -101,6 +103,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
             id="standard-helperText"
             label="JOB TITLE"
             variant="standard"
+            name='jobTitle'
             sx={styles.input}
             onChange={onChangesHandler}
             inputProps={{ readOnly: !edit }}

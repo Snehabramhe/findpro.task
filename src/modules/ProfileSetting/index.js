@@ -6,9 +6,12 @@ import Consultant from "./partials/Consultant";
 
 const ProfileSetting = () => {
   const [formData, setFormData] = useState({
+    firstName: 'Andrews',
+    lastName: 'Kyla',
+    jobTitle: 'Project Manager',
     salaryType: 'hourly'
   });
-  const [edit, setEdit] = useState(true);
+  const [edit, setEdit] = useState(false);
 
   const styles = getSx();
 
