@@ -57,13 +57,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
     setFormData({
       ...formData,
       salaryType: value,
-    });
-  };
-
-  const onChangesSalaryValue = (value) => {
-    setFormData({
-      ...formData,
-      salaryType: value,
+      salaryValue: 0
     });
   };
 
