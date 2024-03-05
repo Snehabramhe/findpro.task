@@ -9,10 +9,10 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+
 import { getSx } from "./style";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
-const disabledClassNameProps = { className: "Mui-disabled" };
 
 const salaryTypesDefaultRates = [
   {
@@ -54,11 +54,13 @@ const Consultant = ({ edit, formData, setFormData }) => {
   };
 
   const onChangesSalaryType = (value) => {
-    setFormData({
-      ...formData,
-      salaryType: value,
-      salaryValue: 0
-    });
+    if (edit) {
+      setFormData({
+        ...formData,
+        salaryType: value,
+        salaryValue: 0,
+      });
+    }
   };
 
   const getDefault = () => {
@@ -67,6 +69,8 @@ const Consultant = ({ edit, formData, setFormData }) => {
     );
     return output;
   };
+
+  console.log(formData, "formData", edit);
 
   return (
     <Box sx={styles.wrapper}>
@@ -78,8 +82,8 @@ const Consultant = ({ edit, formData, setFormData }) => {
             label="LAST NAME"
             variant="standard"
             sx={styles.input}
-            readOnly={edit}
             onChange={onChangesHandler}
+            inputProps={{ readOnly: !edit }}
           />
         </Grid>
         <Grid item lg={4} md={6} xs={12}>
@@ -88,8 +92,8 @@ const Consultant = ({ edit, formData, setFormData }) => {
             label="FIRST NAME"
             variant="standard"
             sx={styles.input}
-            readOnly={edit}
             onChange={onChangesHandler}
+            inputProps={{ readOnly: !edit }}
           />
         </Grid>
         <Grid item lg={4} md={6} xs={12}>
@@ -98,8 +102,8 @@ const Consultant = ({ edit, formData, setFormData }) => {
             label="JOB TITLE"
             variant="standard"
             sx={styles.input}
-            readOnly={edit}
             onChange={onChangesHandler}
+            inputProps={{ readOnly: !edit }}
           />
         </Grid>
       </Grid>
@@ -151,6 +155,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
           <Switch
             {...label}
             checked={formData.range}
+            disabled={!edit}
             onChange={(e) =>
               setFormData({
                 ...formData,
@@ -164,6 +169,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
           {formData.range ? (
             <>
               <OutlinedInput
+                readOnly={!edit}
                 id="outlined-adornment-weight"
                 value={formData.salaryValueMin || getDefault().range.min}
                 startAdornment={
@@ -185,6 +191,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
                 onChange={onChangesHandler}
               />
               <OutlinedInput
+                readOnly={!edit}
                 id="outlined-adornment-weight"
                 value={formData.salaryValueMax || getDefault().range.min}
                 startAdornment={
@@ -208,6 +215,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
             </>
           ) : (
             <OutlinedInput
+              readOnly={!edit}
               id="outlined-adornment-weight"
               value={formData.salaryValue || getDefault().fixedRate}
               startAdornment={
