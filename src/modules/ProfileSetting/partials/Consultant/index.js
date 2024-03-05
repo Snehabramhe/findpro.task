@@ -14,6 +14,33 @@ import { getSx } from "./style";
 const label = { inputProps: { "aria-label": "Switch demo" } };
 const disabledClassNameProps = { className: "Mui-disabled" };
 
+const salaryTypesDefaultRates = [
+  {
+    type: "hourly",
+    fixedRate: 24,
+    range: {
+      min: 24,
+      max: 32,
+    },
+  },
+  {
+    type: "monthly",
+    fixedRate: 3600,
+    range: {
+      min: 2600,
+      max: 3600,
+    },
+  },
+  {
+    type: "annual",
+    fixedRate: 80000,
+    range: {
+      min: 70000,
+      max: 90000,
+    },
+  },
+];
+
 const Consultant = ({ edit, formData, setFormData }) => {
   const styles = getSx();
 
@@ -38,6 +65,13 @@ const Consultant = ({ edit, formData, setFormData }) => {
       ...formData,
       salaryType: value,
     });
+  };
+
+  const getDefault = () => {
+    const output = salaryTypesDefaultRates.find(
+      (item) => item.type === formData.salaryType
+    );
+    return output;
   };
 
   return (
@@ -82,31 +116,31 @@ const Consultant = ({ edit, formData, setFormData }) => {
           variant="outlined"
           sx={{
             ...styles.commonButton,
-            ...(formData.salaryType === "Hourly" ? styles.activeButton : {}),
+            ...(formData.salaryType === "hourly" ? styles.activeButton : {}),
           }}
-          onClick={() => onChangesSalaryType("Hourly")}
+          onClick={() => onChangesSalaryType("hourly")}
         >
-          Hourly
+          hourly
         </Button>
         <Button
           variant="outlined"
           sx={{
             ...styles.commonButton,
-            ...(formData.salaryType === "Monthly" ? styles.activeButton : {}),
+            ...(formData.salaryType === "monthly" ? styles.activeButton : {}),
           }}
-          onClick={() => onChangesSalaryType("Monthly")}
+          onClick={() => onChangesSalaryType("monthly")}
         >
-          Monthly
+          monthly
         </Button>
         <Button
           variant="outlined"
           sx={{
             ...styles.commonButton,
-            ...(formData.salaryType === "Annual" ? styles.activeButton : {}),
+            ...(formData.salaryType === "annual" ? styles.activeButton : {}),
           }}
-          onClick={() => onChangesSalaryType("Annual")}
+          onClick={() => onChangesSalaryType("annual")}
         >
-          Annual
+          annual
         </Button>
       </Box>
       <Typography sx={styles.subheading}>Salary value</Typography>
@@ -132,11 +166,12 @@ const Consultant = ({ edit, formData, setFormData }) => {
           />
           <Typography sx={styles.heading3}>Set range</Typography>
         </Box>
-        <Box sx={{ display: "flex", columnGap: "1rem", alignItems: 'center' }}>
+        <Box sx={{ display: "flex", columnGap: "1rem", alignItems: "center" }}>
           {formData.range ? (
             <>
               <OutlinedInput
                 id="outlined-adornment-weight"
+                value={formData.salaryValueMin || getDefault().range.min}
                 startAdornment={
                   <InputAdornment position="end" sx={styles.inputAdornment}>
                     $
@@ -157,6 +192,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
               />
               <OutlinedInput
                 id="outlined-adornment-weight"
+                value={formData.salaryValueMax || getDefault().range.min}
                 startAdornment={
                   <InputAdornment position="end" sx={styles.inputAdornment}>
                     $
@@ -179,6 +215,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
           ) : (
             <OutlinedInput
               id="outlined-adornment-weight"
+              value={formData.salaryValue || getDefault().fixedRate}
               startAdornment={
                 <InputAdornment position="end" sx={styles.inputAdornment}>
                   $

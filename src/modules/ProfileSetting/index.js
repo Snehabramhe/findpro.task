@@ -6,7 +6,7 @@ import Consultant from "./partials/Consultant";
 
 const ProfileSetting = () => {
   const [formData, setFormData] = useState({
-    salaryType: 'Hourly'
+    salaryType: 'hourly'
   });
   const [edit, setEdit] = useState(true);
 
