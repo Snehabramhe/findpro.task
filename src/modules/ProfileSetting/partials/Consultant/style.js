@@ -21,8 +21,9 @@ export const getSx = () => {
     heading2: {
       fontSize: "20px",
       fontWeight: "600",
+      margin: "1rem 0",
     },
-    heading3: {
+    subheading: {
       fontSize: "18px",
       fontWeight: "500",
     },

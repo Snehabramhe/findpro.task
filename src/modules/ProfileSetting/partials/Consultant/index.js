@@ -75,7 +75,8 @@ const Consultant = ({ edit, formData, setFormData }) => {
           />
         </Grid>
       </Grid>
-      <Typography sx={styles.heading2}>Consultant OverView</Typography>
+      <Typography sx={styles.heading2}>Expected Salary</Typography>
+      <Typography sx={styles.subheading}>Select Salary Type</Typography>
       <Box sx={styles.buttonWrapper}>
         <Button
           variant="outlined"
@@ -108,8 +109,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
           Annual
         </Button>
       </Box>
-      <Typography sx={styles.heading2}>Expected Salary</Typography>
-      <Typography sx={styles.heading2}>Salary value</Typography>
+      <Typography sx={styles.subheading}>Salary value</Typography>
       <Box>
         <Box
           sx={{
@@ -119,7 +119,7 @@ const Consultant = ({ edit, formData, setFormData }) => {
             marginTop: "1rem",
           }}
         >
-          <Typography sx={styles.heading3}>Fixed rate</Typography>
+          <Typography sx={styles.subheading}>Fixed rate</Typography>
           <Switch
             {...label}
             checked={formData.range}
